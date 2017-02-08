@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:views="clr-namespace:GardenBeds.Views;assembly=GardenBeds"
+             x:Class="GardenBeds.Views.MainMenu"
+             mvvm:ViewModelLocator.AutowireViewModel="True">
+  
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <views:NegateBooleanConverter x:Key="BoolInverter"/>
+      <views:SizeToTextConverter x:Key="SizeToText"/>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="50"></RowDefinition>
+      <RowDefinition Height="*"></RowDefinition>
+    </Grid.RowDefinitions>
+    
+    <!--Header-->
+    <Grid Grid.Row="0">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="50"></ColumnDefinition>
+        <ColumnDefinition Width="*"></ColumnDefinition>
+        <ColumnDefinition Width="50"></ColumnDefinition>
+      </Grid.ColumnDefinitions>
+      <Image Source="menu.png" Aspect="AspectFit" Grid.Column="0" />
+      <Image Source="profile.png" Aspect="AspectFit" Grid.Column="2" />
+    </Grid>
+
+    <!--Content-->
+    <StackLayout x:Name="StackLayout" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Grid.Row="1">
+
+      <ActivityIndicator IsVisible="{Binding Loading}"
+                         IsRunning="{Binding Loading}"
+                         Color="Black"
+                         VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"></ActivityIndicator>
+
+      <ListView x:Name="listView" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
+              ItemsSource="{Binding Locations}" IsVisible="{Binding Loading, Converter={StaticResource BoolInverter}}"
+                ItemSelected="ListView_OnItemSelected" HasUnevenRows="True">
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <ViewCell>
+              <ViewCell.View>
+                <Grid>
+                  <Grid.RowDefinitions>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                  </Grid.RowDefinitions>
+                  <Label Grid.Row="0" TextColor="Black" VerticalTextAlignment="Center" FontSize="22" FontAttributes="Bold" Text="{Binding Name}"></Label>
+                  <Label Grid.Row="1" TextColor="Gray" VerticalTextAlignment="Start" Text="{Binding Size, Converter={StaticResource SizeToText}}"></Label>
+                </Grid>
+              </ViewCell.View>
+            </ViewCell>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
+    </StackLayout>
+  </Grid>
+  
+</ContentPage>
