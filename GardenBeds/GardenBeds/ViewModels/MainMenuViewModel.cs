@@ -11,13 +11,13 @@ namespace GardenBeds.ViewModels
     public class MainMenuViewModel : BindableBase
     {
         private readonly INavigationService _navigationService;
-        private readonly IGardenBedsService _gardenBedsService;
+        private readonly IGardenBedService _gardenBedService;
         private bool _loading = true;
 
-        public MainMenuViewModel(INavigationService navigationService, IGardenBedsService gardenBedsService)
+        public MainMenuViewModel(INavigationService navigationService, IGardenBedService gardenBedService)
         {
             _navigationService = navigationService;
-            _gardenBedsService = gardenBedsService;
+            _gardenBedService = gardenBedService;
 
             NavigateToDetailsCommand = new DelegateCommand<GardenBed>(NavigateToDetails);
             LoadData();
@@ -25,7 +25,7 @@ namespace GardenBeds.ViewModels
         
         private async void LoadData()
         {
-            var beds = await _gardenBedsService.GetGardenBeds();
+            var beds = await _gardenBedService.GetGardenBeds();
             beds.ForEach(bed => GardenBeds.Add(bed));
             Loading = false;
         }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GardenBeds.Services
 {
-    public interface IGardenBedsService
+    public interface IGardenBedService
     {
         Task<List<GardenBed>> GetGardenBeds();
         Task<GardenBed> GetGardenBed(int id);

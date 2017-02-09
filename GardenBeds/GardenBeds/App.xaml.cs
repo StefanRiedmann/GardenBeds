@@ -17,7 +17,7 @@ namespace GardenBeds
 
         protected override void RegisterTypes()
         {
-            Container.RegisterType(typeof (IGardenBedsService), typeof (GardenBedService), null,
+            Container.RegisterType(typeof (IGardenBedService), typeof (GardenBedService), null,
                 new ContainerControlledLifetimeManager());
             Container.RegisterTypeForNavigation<MainMenu, MainMenuViewModel>();
         }

@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace GardenBeds.Services
 {
-    public class GardenBedService : IGardenBedsService
+    public class GardenBedService : IGardenBedService
     {
         private List<GardenBed> _demodata;
         private Task _loader;
@@ -27,7 +27,11 @@ namespace GardenBeds.Services
                 using (var streamReader = new StreamReader(stream))
                 {
                     var json = await streamReader.ReadToEndAsync();
-                    _demodata = await Task.Factory.StartNew(() => JsonConvert.DeserializeObject<List<GardenBed>>(json));
+                    _demodata = Task.Factory.StartNew(() =>
+                    {
+                        var data = JsonConvert.DeserializeObject<List<GardenBed>>(json);
+                        return data;
+                    }).Result;
                 }
             });
             await _loader;
