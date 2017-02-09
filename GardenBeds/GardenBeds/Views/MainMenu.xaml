@@ -20,7 +20,7 @@
     </Grid.RowDefinitions>
     
     <!--Header-->
-    <Grid Grid.Row="0">
+    <Grid Grid.Row="0" BackgroundColor="Blue">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="50"></ColumnDefinition>
         <ColumnDefinition Width="*"></ColumnDefinition>
@@ -39,7 +39,7 @@
                          VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"></ActivityIndicator>
 
       <ListView x:Name="listView" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
-              ItemsSource="{Binding Locations}" IsVisible="{Binding Loading, Converter={StaticResource BoolInverter}}"
+              ItemsSource="{Binding GardenBeds}" IsVisible="{Binding Loading, Converter={StaticResource BoolInverter}}"
                 ItemSelected="ListView_OnItemSelected" HasUnevenRows="True">
         <ListView.ItemTemplate>
           <DataTemplate>
@@ -51,7 +51,7 @@
                     <RowDefinition Height="Auto"></RowDefinition>
                   </Grid.RowDefinitions>
                   <Label Grid.Row="0" TextColor="Black" VerticalTextAlignment="Center" FontSize="22" FontAttributes="Bold" Text="{Binding Name}"></Label>
-                  <Label Grid.Row="1" TextColor="Gray" VerticalTextAlignment="Start" Text="{Binding Size, Converter={StaticResource SizeToText}}"></Label>
+                  <Label Grid.Row="1" TextColor="Gray" VerticalTextAlignment="Start" Text="{Binding Size, Converter={StaticResource SizeToText}}" Margin="0,0,0,15"></Label>
                 </Grid>
               </ViewCell.View>
             </ViewCell>
