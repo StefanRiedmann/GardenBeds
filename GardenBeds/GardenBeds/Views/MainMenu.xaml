@@ -4,7 +4,7 @@
              xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              xmlns:views="clr-namespace:GardenBeds.Views;assembly=GardenBeds"
              x:Class="GardenBeds.Views.MainMenu"
-             mvvm:ViewModelLocator.AutowireViewModel="True">
+             mvvm:ViewModelLocator.AutowireViewModel="True" Title="GardenBeds">
   
   <ContentPage.Resources>
     <ResourceDictionary>
@@ -20,11 +20,11 @@
     </Grid.RowDefinitions>
     
     <!--Header-->
-    <Grid Grid.Row="0" BackgroundColor="Blue">
+    <Grid Grid.Row="0" BackgroundColor="#60513E">
       <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="50"></ColumnDefinition>
+        <ColumnDefinition Width="40"></ColumnDefinition>
         <ColumnDefinition Width="*"></ColumnDefinition>
-        <ColumnDefinition Width="50"></ColumnDefinition>
+        <ColumnDefinition Width="40"></ColumnDefinition>
       </Grid.ColumnDefinitions>
       <Image Source="menu.png" Aspect="AspectFit" Grid.Column="0" />
       <Image Source="profile.png" Aspect="AspectFit" Grid.Column="2" />
@@ -35,23 +35,23 @@
 
       <ActivityIndicator IsVisible="{Binding Loading}"
                          IsRunning="{Binding Loading}"
-                         Color="Black"
+                         Color="#60513E"
                          VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"></ActivityIndicator>
 
       <ListView x:Name="listView" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
               ItemsSource="{Binding GardenBeds}" IsVisible="{Binding Loading, Converter={StaticResource BoolInverter}}"
-                ItemSelected="ListView_OnItemSelected" HasUnevenRows="True">
+              ItemSelected="ListView_OnItemSelected" HasUnevenRows="True">
         <ListView.ItemTemplate>
           <DataTemplate>
             <ViewCell>
               <ViewCell.View>
                 <Grid>
                   <Grid.RowDefinitions>
-                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="Auto"></RowDefinition>
                   </Grid.RowDefinitions>
-                  <Label Grid.Row="0" TextColor="Black" VerticalTextAlignment="Center" FontSize="22" FontAttributes="Bold" Text="{Binding Name}"></Label>
-                  <Label Grid.Row="1" TextColor="Gray" VerticalTextAlignment="Start" Text="{Binding Size, Converter={StaticResource SizeToText}}" Margin="0,0,0,15"></Label>
+                  <Label Grid.Row="0" TextColor="Black" VerticalTextAlignment="Center" FontSize="22" FontAttributes="Bold" Text="{Binding Name}" Margin="10,15,10,0"></Label>
+                  <Label Grid.Row="1" TextColor="Gray" VerticalTextAlignment="Start" Text="{Binding Size, Converter={StaticResource SizeToText}}" Margin="10,0,10,15"></Label>
                 </Grid>
               </ViewCell.View>
             </ViewCell>

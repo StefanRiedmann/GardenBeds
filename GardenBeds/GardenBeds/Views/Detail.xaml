@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:GardenBeds.Views;assembly=GardenBeds"
+             xmlns:abs="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
+             xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             x:Class="GardenBeds.Views.Detail"
+             mvvm:ViewModelLocator.AutowireViewModel="True">
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <views:NegateBooleanConverter x:Key="BoolInverter"/>
+      <views:PlantToStringConverter x:Key="PlantToStringConverter"/>
+      <views:PlantToImageConverter x:Key="PlantToImageConverter"/>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="50"></RowDefinition>
+      <RowDefinition Height="*"></RowDefinition>
+    </Grid.RowDefinitions>
+
+    <!--Header-->
+    <Grid Grid.Row="0" BackgroundColor="#60513E">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="40"></ColumnDefinition>
+        <ColumnDefinition Width="*"></ColumnDefinition>
+        <ColumnDefinition Width="40"></ColumnDefinition>
+      </Grid.ColumnDefinitions>
+      <Image Source="back.png" Aspect="AspectFit" Grid.Column="0">
+        <Image.GestureRecognizers>
+          <TapGestureRecognizer Tapped="OnTapGestureRecognizerTapped"></TapGestureRecognizer>
+        </Image.GestureRecognizers>
+      </Image>
+      <Label Grid.Column="1" Text="{Binding GardenBed.Name}" TextColor="White" FontSize="18"
+             HorizontalOptions="Fill" HorizontalTextAlignment="Center"
+             VerticalOptions="Fill" VerticalTextAlignment="Center"></Label>
+      <Image Source="profile.png" Aspect="AspectFit" Grid.Column="2" />
+    </Grid>
+
+    <!--Content-->
+    <ActivityIndicator IsVisible="{Binding Loading}"
+                       IsRunning="{Binding Loading}"
+                       Color="#60513E"
+                       VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Grid.Row="1">
+    </ActivityIndicator>
+
+    <abs:CarouselViewControl x:Name="Carousel"
+                             Grid.Row="1"
+                             ItemsSource="{Binding GardenBed.Plantations}"
+                             IsVisible="{Binding Loading, Converter={StaticResource BoolInverter}}"
+                             BackgroundColor="#60513E"
+                             Arrows="True"
+                             AnimateTransition="True"
+                             PageIndicatorTintColor="White"
+                             CurrentPageIndicatorTintColor="Orange"
+                             ShowIndicators="True">
+      <abs:CarouselViewControl.ItemTemplate>
+        <DataTemplate>
+          <Grid>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="50"></RowDefinition>
+              <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" FontSize="22" Text="{Binding Plant, Converter={StaticResource PlantToStringConverter}}"></Label>
+            <Image Grid.Row="1" Source="{Binding Plant, Converter={StaticResource PlantToImageConverter}}"></Image>
+          </Grid>
+        </DataTemplate>
+      </abs:CarouselViewControl.ItemTemplate>
+    </abs:CarouselViewControl>
+    </Grid>
+</ContentPage>

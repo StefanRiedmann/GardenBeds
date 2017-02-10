@@ -2,7 +2,7 @@
 {
     public enum Plants
     {
-        Salad,
+        Lettuce,
         Eggplant,
         Tomatoe,
         Pepper

@@ -22,6 +22,7 @@ namespace GardenBeds.Services
         {
             _loader = Task.Factory.StartNew(async () =>
             {
+                Task.Delay(2000).Wait(); //simulating some backend delay       
                 var assembly = typeof (GardenBedService).GetTypeInfo().Assembly;
                 using (var stream = assembly.GetManifestResourceStream("GardenBeds.Resources.DemoData.json"))
                 using (var streamReader = new StreamReader(stream))
@@ -46,6 +47,7 @@ namespace GardenBeds.Services
         public async Task<GardenBed> GetGardenBed(int id)
         {
             await _loader;
+            await Task.Delay(2000); //simulating some backend delay  
             return _demodata.FirstOrDefault(bed => bed.Id == id);
         }
     }

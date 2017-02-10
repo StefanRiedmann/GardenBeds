@@ -1,8 +1,10 @@
-﻿using GardenBeds.Services;
+﻿using GardenBeds.Logger;
+using GardenBeds.Services;
 using GardenBeds.ViewModels;
 using GardenBeds.Views;
 using Microsoft.Practices.Unity;
 using Prism.Unity;
+using Xamarin.Forms;
 
 namespace GardenBeds
 {
@@ -19,12 +21,15 @@ namespace GardenBeds
         {
             Container.RegisterType(typeof (IGardenBedService), typeof (GardenBedService), null,
                 new ContainerControlledLifetimeManager());
+
+            Container.RegisterTypeForNavigation<NavigationPage>();
             Container.RegisterTypeForNavigation<MainMenu, MainMenuViewModel>();
+            Container.RegisterTypeForNavigation<Detail, DetailViewModel>();
         }
 
         protected override void OnStart()
         {
-            // Handle when your app starts
+            Logger = new PrismLogger();
         }
 
         protected override void OnSleep()

@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using GardenBeds.Models;
 using GardenBeds.Services;
 using Microsoft.Practices.ObjectBuilder2;
@@ -8,7 +9,7 @@ using Prism.Navigation;
 
 namespace GardenBeds.ViewModels
 {
-    public class MainMenuViewModel : BindableBase
+    public class MainMenuViewModel : BindableBase, INavigationAware
     {
         private readonly INavigationService _navigationService;
         private readonly IGardenBedService _gardenBedService;
@@ -42,7 +43,15 @@ namespace GardenBeds.ViewModels
 
         private void NavigateToDetails(GardenBed obj)
         {
-            _navigationService.NavigateAsync($"Details/{obj.Id}");
+            _navigationService.NavigateAsync($"Detail?id={obj.Id}");
+        }
+
+        public void OnNavigatedFrom(NavigationParameters parameters)
+        {
+        }
+
+        public void OnNavigatedTo(NavigationParameters parameters)
+        {
         }
     }
 }
