@@ -14,7 +14,7 @@ namespace GardenBeds
 
         protected override void OnInitialized()
         {
-            NavigationService.NavigateAsync("MainMenu");
+            NavigationService.NavigateAsync(nameof(MainMenu));
         }
 
         protected override void RegisterTypes()

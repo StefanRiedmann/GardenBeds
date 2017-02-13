@@ -13,7 +13,7 @@
     </ResourceDictionary>
   </ContentPage.Resources>
 
-  <Grid>
+  <Grid BackgroundColor="#6bbf43">
     <Grid.RowDefinitions>
       <RowDefinition Height="50"></RowDefinition>
       <RowDefinition Height="*"></RowDefinition>
@@ -50,7 +50,7 @@
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="Auto"></RowDefinition>
                   </Grid.RowDefinitions>
-                  <Label Grid.Row="0" TextColor="Black" VerticalTextAlignment="Center" FontSize="22" FontAttributes="Bold" Text="{Binding Name}" Margin="10,15,10,0"></Label>
+                  <Label Grid.Row="0" TextColor="White" VerticalTextAlignment="Center" FontSize="22" FontAttributes="Bold" Text="{Binding Name}" Margin="10,15,10,0"></Label>
                   <Label Grid.Row="1" TextColor="Gray" VerticalTextAlignment="Start" Text="{Binding Size, Converter={StaticResource SizeToText}}" Margin="10,0,10,15"></Label>
                 </Grid>
               </ViewCell.View>

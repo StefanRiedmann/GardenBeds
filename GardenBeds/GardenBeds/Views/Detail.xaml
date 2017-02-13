@@ -14,7 +14,7 @@
     </ResourceDictionary>
   </ContentPage.Resources>
 
-  <Grid>
+  <Grid BackgroundColor="#6bbf43">
     <Grid.RowDefinitions>
       <RowDefinition Height="50"></RowDefinition>
       <RowDefinition Height="*"></RowDefinition>
@@ -46,10 +46,10 @@
     </ActivityIndicator>
 
     <abs:CarouselViewControl x:Name="Carousel"
-                             Grid.Row="1"
+                             Grid.Row="1" HorizontalOptions="Fill" VerticalOptions="Fill"
                              ItemsSource="{Binding GardenBed.Plantations}"
                              IsVisible="{Binding Loading, Converter={StaticResource BoolInverter}}"
-                             BackgroundColor="#60513E"
+                             BackgroundColor="Transparent"
                              Arrows="True"
                              AnimateTransition="True"
                              PageIndicatorTintColor="White"
@@ -62,8 +62,11 @@
               <RowDefinition Height="50"></RowDefinition>
               <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Label Grid.Row="0" FontSize="22" Text="{Binding Plant, Converter={StaticResource PlantToStringConverter}}"></Label>
-            <Image Grid.Row="1" Source="{Binding Plant, Converter={StaticResource PlantToImageConverter}}"></Image>
+            <Label Grid.Row="0" FontSize="22" Text="{Binding Plant, Converter={StaticResource PlantToStringConverter}}"
+                   VerticalTextAlignment="Center" HorizontalTextAlignment="Center"></Label>
+            <Image Grid.Row="1" Source="{Binding Plant, Converter={StaticResource PlantToImageConverter}}"
+                   HorizontalOptions="CenterAndExpand" VerticalOptions="Fill" Aspect="AspectFit"
+                   Margin="50,50,50,50"></Image>
           </Grid>
         </DataTemplate>
       </abs:CarouselViewControl.ItemTemplate>

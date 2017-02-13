@@ -2,6 +2,7 @@
 using Prism.Mvvm;
 using Prism.Navigation;
 using GardenBeds.Models;
+using Prism.Commands;
 
 namespace GardenBeds.ViewModels
 {
@@ -30,7 +31,9 @@ namespace GardenBeds.ViewModels
             set { SetProperty(ref _gardenBed, value); }
         }
 
-        public void GoBack()
+        public DelegateCommand NavigateBackCommand => new DelegateCommand(GoBack);
+
+        private void GoBack()
         {
             _navigationService.GoBackAsync();
         }
@@ -43,9 +46,13 @@ namespace GardenBeds.ViewModels
         {
             Loading = true;
             int id;
-            if(int.TryParse((string)parameters["id"], out id))
+            if (parameters.ContainsKey("id") && int.TryParse(parameters["id"] as string, out id))
             {
                 GardenBed = await _gardenBedService.GetGardenBed(id);
+            }
+            else
+            {
+                GardenBed = null;
             }
             Loading = false;
         }

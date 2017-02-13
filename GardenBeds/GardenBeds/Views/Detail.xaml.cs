@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using GardenBeds.ViewModels;
 using Xamarin.Forms;
 
 namespace GardenBeds.Views
 {
     public partial class Detail : ContentPage
     {
+        public DetailViewModel ViewModel => BindingContext as DetailViewModel;
+
         public Detail()
         {
             InitializeComponent();
@@ -17,7 +19,7 @@ namespace GardenBeds.Views
 
         private void OnTapGestureRecognizerTapped(object sender, EventArgs e)
         {
-            //todo
+            ViewModel?.NavigateBackCommand.Execute();
         }
     }
 }

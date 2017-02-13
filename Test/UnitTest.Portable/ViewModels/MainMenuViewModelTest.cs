@@ -36,7 +36,7 @@ namespace UnitTest.Portable.ViewModels
         }
 
         [Test]
-        public void Constructor_LoadsData_And_SetLoadingToFalse()
+        public void Constructor_LoadsData()
         {
             //Arrange
             var testData = new List<GardenBed>(new[]
@@ -68,6 +68,21 @@ namespace UnitTest.Portable.ViewModels
             _viewModel.NavigateToDetailsCommand.Execute(testData);
             //Assert
             _navMock.Verify(); //also happens in cleanup, but well... 
+        }
+
+        [Test]
+        public void LoadData_SetsLoadingToFalse_WhenReady()
+        {
+            //Arrange
+            _serviceMock
+                .Setup(s => s.GetGardenBeds())
+                .Returns(Task.Factory.StartNew(() => new List<GardenBed>()))
+                .Verifiable();
+            _viewModel.Loading = true;
+            //Act
+            _viewModel = new MainMenuViewModel(_navMock.Object, _serviceMock.Object);
+            //Assert
+            Assert.IsFalse(_viewModel.Loading);
         }
     }
 }

@@ -1,8 +1,9 @@
 ﻿{
   "dependencies": {
     "CarouselView.FormsPlugin": "3.0.0",
-    "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
+    "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2",
     "Prism.Unity.Forms": "6.2.0",
+    "System.Runtime.WindowsRuntime.UI.Xaml": "4.3.0",
     "Xamarin.Forms": "2.3.3.180"
   },
   "frameworks": {

@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using GardenBeds.Models;
 using GardenBeds.Services;
+using GardenBeds.Views;
 using Microsoft.Practices.ObjectBuilder2;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -19,8 +20,6 @@ namespace GardenBeds.ViewModels
         {
             _navigationService = navigationService;
             _gardenBedService = gardenBedService;
-
-            NavigateToDetailsCommand = new DelegateCommand<GardenBed>(NavigateToDetails);
             LoadData();
         }
         
@@ -39,11 +38,11 @@ namespace GardenBeds.ViewModels
 
         public ObservableCollection<GardenBed> GardenBeds { get; } = new ObservableCollection<GardenBed>();
 
-        public DelegateCommand<GardenBed> NavigateToDetailsCommand { get; private set; }
+        public DelegateCommand<GardenBed> NavigateToDetailsCommand => new DelegateCommand<GardenBed>(NavigateToDetails);
 
         private void NavigateToDetails(GardenBed obj)
         {
-            _navigationService.NavigateAsync($"Detail?id={obj.Id}");
+            _navigationService.NavigateAsync($"{nameof(Detail)}?id={obj.Id}");
         }
 
         public void OnNavigatedFrom(NavigationParameters parameters)
