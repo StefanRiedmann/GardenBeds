@@ -21,7 +21,7 @@ namespace UnitTest.Portable.Services
         {
             var items = _service.GetGardenBeds().Result;
             Assert.IsNotNull(items);
-            Assert.AreEqual(items.Count, 2);
+            Assert.AreEqual(4, items.Count);
         }
 
         [Test]
@@ -29,7 +29,7 @@ namespace UnitTest.Portable.Services
         {
             var item = _service.GetGardenBed(1).Result;
             Assert.IsNotNull(item);
-            Assert.AreEqual(item.Id, 1);
+            Assert.AreEqual(1, item.Id);
         }
 
         [Test]

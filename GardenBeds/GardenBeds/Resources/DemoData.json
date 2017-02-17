@@ -4,12 +4,9 @@
     "Name": "Raised bed",
     "Size": 8,
     "Plantations": [
-      {
-        "Plant": "Tomatoe"
-      },
-      {
-        "Plant": "Pepper"
-      }
+      { "Plant": "Tomatoe" },
+      { "Plant": "Pepper" },
+      { "Plant": "Parsley" }
     ]
   },
   {
@@ -17,15 +14,29 @@
     "Name": "Under the tree",
     "Size": 12,
     "Plantations": [
-      {
-        "Plant": "Lettuce"
-      },
-      {
-        "Plant": "Eggplant"
-      },
-      {
-        "Plant": "Tomatoe"
-      }
+      { "Plant": "Eggplant" },
+      { "Plant": "Lettuce" },
+      { "Plant": "Cucumber" }
+    ]
+  },
+  {
+    "Id": 3,
+    "Name": "On the balcony",
+    "Size": 12,
+    "Plantations": [
+      { "Plant": "Basil" },
+      { "Plant": "Parsley" },
+      { "Plant": "Rosemary" }
+    ]
+  },
+  {
+    "Id": 4,
+    "Name": "Behind the house",
+    "Size": 12,
+    "Plantations": [
+      { "Plant": "Pepper" },
+      { "Plant": "Eggplant" },
+      { "Plant": "Pumpkin" }
     ]
   }
 ]

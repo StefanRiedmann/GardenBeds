@@ -23,6 +23,7 @@ namespace GardenBeds.Views
             var b = e.SelectedItem as GardenBed;
             if (b != null)
                 ViewModel?.NavigateToDetailsCommand.Execute(b);
+            listView.SelectedItem = null;
         }
     }
 }

@@ -5,6 +5,12 @@
         Lettuce,
         Eggplant,
         Tomatoe,
-        Pepper
+        Pepper,
+        Cucumber,
+        Pumpkin,
+        Radish,
+        Basil,
+        Parsley,
+        Rosemary
     }
 }

@@ -60,7 +60,7 @@ namespace UnitTest.Portable.ViewModels
             //Arrange
             var testData = new GardenBed {Id = 7, Name = "test"};
             _navMock
-                .Setup(n => n.NavigateAsync(It.Is<string>(uri => uri.Equals("Details/7")), null, null, true))
+                .Setup(n => n.NavigateAsync(It.Is<string>(uri => uri.Equals("Detail?id=7")), null, null, true))
                 .Returns(Task.Factory.StartNew(() => { }))
                 .Verifiable();
             //Act

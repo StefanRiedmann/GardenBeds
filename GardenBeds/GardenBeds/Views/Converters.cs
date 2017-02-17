@@ -47,6 +47,7 @@ namespace GardenBeds.Views
     }
     public class PlantToImageConverter : IValueConverter
     {
+        public static ImageSource DefaultImageSource = ImageSource.FromResource("GardenBeds.Resources.default.gif");
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             if (value is Plants)
@@ -61,9 +62,21 @@ namespace GardenBeds.Views
                         return ImageSource.FromResource("GardenBeds.Resources.lettuce.jpg");
                     case Plants.Tomatoe:
                         return ImageSource.FromResource("GardenBeds.Resources.tomatoe.jpg");
+                    case Plants.Cucumber:
+                        return ImageSource.FromResource("GardenBeds.Resources.cucumber.jpg");
+                    case Plants.Pumpkin:
+                        return ImageSource.FromResource("GardenBeds.Resources.pumpkin.jpg");
+                    case Plants.Radish:
+                        return ImageSource.FromResource("GardenBeds.Resources.radish.jpg");
+                    case Plants.Basil:
+                        return ImageSource.FromResource("GardenBeds.Resources.basil.jpg");
+                    case Plants.Parsley:
+                        return ImageSource.FromResource("GardenBeds.Resources.parsley.jpg");
+                    case Plants.Rosemary:
+                        return ImageSource.FromResource("GardenBeds.Resources.rosemary.jpg");
                 }
             }
-            return ImageSource.FromResource("GardenBeds.Resources.default.gif");
+            return DefaultImageSource;
         }
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
